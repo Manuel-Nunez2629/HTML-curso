@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  database:
+    image: koenkk/docker-compose-exercise-database
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: movie123
+    networks:
+      - app-network
+
+  webapp:
+    image: koenkk/docker-compose-exercise-webapp
+    container_name: webapp
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
